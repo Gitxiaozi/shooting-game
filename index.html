@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>太空射击游戏</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1>太空射击游戏</h1>
+            <div class="score-board">
+                <div class="score">得分: <span id="score">0</span></div>
+                <div class="lives">生命: <span id="lives">3</span></div>
+                <div class="level">关卡: <span id="level">1</span></div>
+            </div>
+        </div>
+        <canvas id="gameCanvas"></canvas>
+        <div class="game-controls">
+            <p>使用方向键移动，空格键射击</p>
+            
+            <div class="custom-upload-section" style="margin: 15px 0; padding: 10px; border: 1px dashed #aaa; border-radius: 8px;">
+                <h3 style="margin-top:0; color: #ffd700; border-bottom: 1px solid #555; padding-bottom: 5px; font-size: 1em;">自定义游戏素材</h3>
+                
+                <!-- Enemy Upload -->
+                <div style="margin-bottom: 10px;">
+                    <label style="display: block; font-size: 0.9em; color: #ddd;">1. 敌人头像 (支持多图/合照):</label>
+                    <input type="file" id="enemyImageInput" accept="image/*" multiple style="display: none;">
+                    <button onclick="document.getElementById('enemyImageInput').click()" style="padding: 4px 10px; font-size: 0.85em;">上传敌人图片</button>
+                    <span id="enemyUploadStatus" style="font-size: 0.8em; color: #aaa; margin-left: 5px;"></span>
+                </div>
+
+                <!-- Boss Upload -->
+                <div style="margin-bottom: 10px;">
+                    <label style="display: block; font-size: 0.9em; color: #ddd;">2. Boss 头像:</label>
+                    <input type="file" id="bossImageInput" accept="image/*" style="display: none;">
+                    <button onclick="document.getElementById('bossImageInput').click()" style="padding: 4px 10px; font-size: 0.85em;">上传 Boss 图片</button>
+                    <span id="bossUploadStatus" style="font-size: 0.8em; color: #aaa; margin-left: 5px;"></span>
+                </div>
+
+                <!-- Shooter Upload -->
+                <div>
+                    <label style="display: block; font-size: 0.9em; color: #ddd;">3. 玩家战机头像:</label>
+                    <input type="file" id="shooterImageInput" accept="image/*" style="display: none;">
+                    <button onclick="document.getElementById('shooterImageInput').click()" style="padding: 4px 10px; font-size: 0.85em;">上传玩家图片</button>
+                    <span id="shooterUploadStatus" style="font-size: 0.8em; color: #aaa; margin-left: 5px;"></span>
+                </div>
+            </div>
+
+            <div class="shooter-selector">
+                <label>选择内置战机：</label>
+                <button class="shooter-btn active" data-shooter="1" id="shooter1Btn">射击者 1</button>
+                <button class="shooter-btn" data-shooter="2" id="shooter2Btn">射击者 2</button>
+            </div>
+            <button id="startBtn">开始游戏</button>
+            <button id="pauseBtn">暂停</button>
+        </div>
+        <div id="gameOver" class="game-over hidden">
+            <h2>游戏结束</h2>
+            <p>最终得分: <span id="finalScore">0</span></p>
+            <button id="restartBtn">重新开始</button>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
+
